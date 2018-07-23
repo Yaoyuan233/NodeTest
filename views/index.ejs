@@ -1,0 +1,19 @@
+<%- include header %>
+<div class="container" style="padding: 0; margin: 0">
+    <%- include search %>
+    <ul class="list-group col-md-9" style="margin-left: 3%">
+        <% posts.forEach(function(post){%>
+        <li class="list-group-item">
+            <h3><a href="/article/detail?id=<%= post._id%>"><%= post.title %></a></h3>
+            <p class="info">
+                <span>作者：<a href="/users/<%= post.author%>"><%= post.author %></a></span>
+                <span>|</span>
+                <span>日期：<%= post.publishTime %></span>
+            </p>
+        </li>
+        <hr>
+        <%})%>
+    </ul>
+    <hr>
+</div>
+<%- include footer %>

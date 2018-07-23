@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %> - Blog</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--结果还是不能本地使用bootstrap文件，要么就是显示找不到，要么，呵呵-->
+    <!--<link rel="stylesheet" href="127.0.0.1:3000/public/stylesheets/bootstrap.css">
+    <script src="127.0.0.1:3000/public/javascripts/bootstrap.js"></script>-->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            color: black;
+        }
+        a:hover {
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation" style="padding: 1% 0; background-color: rgba(57, 24, 202, 0.1)">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/" style="font-size: 24px">博客首页</a>
+            </div>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <% if(user){ %>
+                <li><a title="发表文章" href="/article/post"><span class="glyphicon glyphicon-pencil"></span>发表文章</a></li>
+                <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>登出</a></li>
+                <%}else{%>
+                <li><a href="/reg"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                <%}%>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <% if (info!="null") { %>
+        <div class="alert alert-info alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <%= info %>
+        </div>
+    <% } %>
